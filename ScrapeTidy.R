@@ -35,12 +35,12 @@ uschart$artist[uschart$artist == 'DARYL HALL JOHN OATES'] <- 'DARYL HALL AND JOH
 # simplify artist names to remove featuring and With
 uschart$artist.temp <- as.numeric(regexpr(' FEAT', uschart$artist))
 uschart$artist.temp[uschart$artist.temp==-1] <- as.numeric(regexpr(' WITH THE', uschart$artist[uschart$artist.temp==-1]))
-uschart$artist.temp[uschart$artist.temp<0] <- 100
+uschart$artist.temp[uschart$artist.temp<0] <- 100 # set the string length to 100 where 'FEAT' or 'WITH THE' isn't found so it isn't trimmed
 uschart$artist.simple <- as.character(str_sub(uschart$artist, 1, uschart$artist.temp-1))
 
 ukchart$artist.temp <- as.numeric(regexpr(' FT', ukchart$artist))
-ukchart$artist.temp[ukchart$artist.temp<0] <- 100
-ukchart$artist.simple <- as.character(str_sub(ukchart$artist, 1, ukchart$artist.temp-1))
+ukchart$artist.temp[ukchart$artist.temp<0] <- 100 # set the string length to 100 where 'FT' isn't found so it isn't trimmed
+ukchart$artist.simple <- as.character(str_sub(ukchart$artist, 1, ukchart$artist.temp-1)) #
 
 
 # save the tidier data
