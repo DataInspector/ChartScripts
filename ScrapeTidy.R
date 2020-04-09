@@ -1,7 +1,6 @@
 library(dplyr)
 library(rvest)
 library(stringr)
-library(forcats)
 
 
 ##### load and tidy data
